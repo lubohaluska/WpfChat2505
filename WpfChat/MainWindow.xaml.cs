@@ -25,6 +25,8 @@ namespace WpfChat
         private List<User_Controls.UsersContact> contacts = new List<User_Controls.UsersContact>();
         private Chat chat;
 
+        private int _CurrentContactID;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -57,7 +59,13 @@ namespace WpfChat
         //tato metoda posiela ID kontaktu
         private void OnContactClicked(int pID)
         {
+            _CurrentContactID = pID;
+            RefreshData(pID);
+        }
 
+        private void RefreshData(int pID)
+        {
+            throw new NotImplementedException();
         }
 
         private void OnUserLogin(User pUser)
@@ -83,6 +91,29 @@ namespace WpfChat
 
             Console.WriteLine(newUserData._ID.ToString());
             Console.WriteLine(newUserData._Email.ToString());
+        }
+
+
+        private void SendMSGTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter && SendMSGTextBox.Text != "")  // neposle prazdnu medzeru
+            {
+                string s = SendMSGTextBox.Text;
+                SendMSGTextBox.Text = "";
+
+                MessageInfoData data = new MessageInfoData()
+                {
+                    _Content = s,
+                    _Date = DateTime.Now,
+                    _ID = 0,
+                    _MessageDirectionType = MessageDirectionType.Outcome,
+                    _MessageStateType = MessageStateType.Send,
+                    _MessageType = MessageType.Text
+                };
+
+                Message message = new Message(data);
+                chat.SendMessage(_CurrentContactID, null);
+            }
         }
     }
 }

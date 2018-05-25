@@ -25,7 +25,7 @@ namespace WpfChat.ChatApp
 
         public void SendMessage(Message pMessage)
         {
-
+            _Chat.User.GetContactDict()[pContactID].AddMessage(pMessage);
         }
 
         public void ReceiveMessage(Message pMessage)

@@ -86,7 +86,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Grid Grid.Column="0">
-                        <TextBox Height="25" Width="369" HorizontalAlignment="Left" Margin="23,8,0,0" Text="Click here to type something..."></TextBox>
+                        <TextBox Name="SendMSGTextBox"  KeyDown="SendMSGTextBox_KeyDown" Height="25" Width="369" HorizontalAlignment="Left" Margin="23,8,0,0" Text="Click here to type something..." TextChanged="TextBox_TextChanged"></TextBox>
                     </Grid>
                 </Grid>
 

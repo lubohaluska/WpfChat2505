@@ -60,7 +60,7 @@ namespace WpfChat.ChatApp
 
         #region MessageController methods
 
-        public void SendMessage(Message pMessage)
+        public void SendMessage(int pContactID, Message pMessage)
         {
             _MessageController.SendMessage(pMessage);
         }
